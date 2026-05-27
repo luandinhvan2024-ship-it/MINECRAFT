@@ -10,7 +10,6 @@ jobs:
     steps:
     - name: "📥 Tải code từ repo Private"
       run: |
-        git clone https://x-access-token:${{ secrets.PAT_TOKEN }}@github.com/luandinhvan2024-ship-it/ABCD.git bot
     - name: "⚙️ Cài Node.js 18"
       uses: actions/setup-node@v4
       with:
