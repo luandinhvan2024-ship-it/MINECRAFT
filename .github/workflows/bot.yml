@@ -1,0 +1,23 @@
+name: RUN
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 */5 * * *'
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 330
+    steps:
+    - name: "📥 Tải code từ repo Private"
+      run: |
+        git clone https://x-access-token:${{ secrets.PAT_TOKEN }}@github.com/luandinhvan2024-ship-it/ABCD.git bot
+    - name: "⚙️ Cài Node.js 18"
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+    - name: "📦 Cài thư viện"
+      working-directory: bot
+      run: npm install
+    - name: "🤖 Chạy bot"
+      working-directory: bot
+      run: npm start
